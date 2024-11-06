@@ -1,0 +1,61 @@
+basePath: /
+definitions:
+  main.ErrorResponse:
+    properties:
+      error:
+        type: string
+    type: object
+  main.album:
+    properties:
+      artist:
+        type: string
+      id:
+        type: string
+      price:
+        type: number
+      title:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: API to manage albums
+  title: Albums API
+  version: "1.0"
+paths:
+  /albums:
+    get:
+      description: Get Albums
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.album'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+      summary: Get album
+      tags:
+      - Album
+    post:
+      consumes:
+      - application/json
+      description: Add Albums
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/main.album'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+      summary: Post album by ID
+      tags:
+      - Album
+swagger: "2.0"
